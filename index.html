@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Temperamental Glass</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div id="instructions">
+        <h1>THE TEMPERAMENTAL GLASS</h1>
+        <p>MOVE TO DISPLACE REALITY</p>
+        <button id="about-btn" onclick="toggleStatement()">STATEMENT</button>
+    </div>
+
+    <div id="statement-overlay" class="hidden" onclick="toggleStatement()">
+        <div class="statement-content">
+            <h2>ARTIST STATEMENT</h2>
+            <p>
+                "The Temperamental Glass" challenges our obsession with the curated self-image. 
+                In an era of filters and stabilization, this digital mirror refuses to cooperate. 
+                It demands stillness for clarity, yet thrives on the chaos of motion. 
+            </p>
+            <p>
+                As the viewer engages, they are not reflected, but interpreted—fractured by 
+                their own energy, reminding us that reality is not a static picture, 
+                but a volatile, living displacement.
+            </p>
+            <p class="signature">— The Machine</p>
+        </div>
+    </div>
+    <script>
+        function toggleStatement() {
+            document.getElementById('statement-overlay').classList.toggle('hidden');
+        }
+    </script>
+    <script src="sketch.js"></script>
+</body>
+</html>
