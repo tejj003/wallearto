@@ -109,18 +109,26 @@ function draw() {
         
         // STATE 3: ENRAGED (Invert + Distort)
         else {
-            let intensity = map(madness, 0.6, 1, 10, 50);
+            let intensity = map(madness, 0.6, 1, 10, 100); // Increased intensity range
             
-            // Draw base inverted
+            // Global Shake for the base image
+            let gx = random(-intensity, intensity);
+            let gy = random(-intensity, intensity);
+
+            // Draw base inverted with shake
+            push();
+            translate(gx, gy);
             filter(INVERT);
             filter(THRESHOLD, 0.4);
             image(video, 0, 0);
+            pop();
             
             // Slice displacement (Glitch)
-            for (let i = 0; i < 10; i++) {
+            // Increased loop to create more chaos covering the screen
+            for (let i = 0; i < 20; i++) { 
                 let y = random(video.height);
-                let h = random(20, 100);
-                let xOffset = random(-intensity * 2, intensity * 2);
+                let h = random(50, 150); // Larger slices
+                let xOffset = random(-intensity * 3, intensity * 3); // Wider displacement
                 
                 // Copy a slice from video and draw it offset
                 let slice = video.get(0, y, video.width, h);
@@ -169,7 +177,7 @@ function draw() {
         fill(255);
         noStroke();
         textAlign(CENTER);
-        text("ANGER LEVEL", width/2, height - 60);
+        text("MOVEMENT LEVEL", width/2, height - 60);
 
     }
 }
